@@ -1,0 +1,59 @@
+{
+  "env": {
+    // Compatibility Profile.
+    // ES5 output and CommonJS module format.
+    "es5_cjs": {
+      "presets": [
+        "@babel/preset-env",
+        "@babel/preset-typescript"
+      ]
+    },
+    // Compatibility Profile ES Modules.
+    // ES5 output with no module transformation (ES Modules syntax).
+    // Intended only to generate an index.esm.js.
+    "es5_esm": {
+      "presets": [
+        ["@babel/preset-env", {
+          "modules": false
+        }],
+        "@babel/preset-typescript"
+      ]
+    },
+    // Future Profile.
+    // ES6 output with no module transformation (ES Modules syntax).
+    "es": {
+      "presets": [
+        ["@babel/preset-env", {
+          "modules": false,
+          "targets": {
+            "node": "6.5"
+          }
+        }],
+        "@babel/preset-typescript"
+      ]
+    },
+    // Bundled Profile.
+    // ES5 output and UMD module format.
+    // To be consumed by <script> html tags.
+    "umd": {
+      "presets": [
+        ["@babel/preset-env", {
+          "modules": false
+        }],
+        "@babel/preset-typescript"
+      ]
+    },
+    // Jest Profile.
+    // To be used by jest tests.
+    "test": {
+      "presets": [
+        "@babel/preset-env",
+        "@babel/preset-typescript"
+      ]
+    }
+  },
+  "plugins": [
+    "@babel/proposal-class-properties",
+    "@babel/proposal-object-rest-spread"
+  ]
+}

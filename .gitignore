@@ -1,0 +1,13 @@
+node_modules
+.DS_Store
+yarn.lock
+package-lock.json
+*.log
+*.orig
+*/src/**/*.js.map
+.idea/
+desktop.ini
+typings/
+dist/
+es/
+lib/
