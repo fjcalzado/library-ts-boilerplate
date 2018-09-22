@@ -1,1 +1,1 @@
-export { validator } from './validator';
+export { myFunction } from './sample';

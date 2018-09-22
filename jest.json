@@ -1,0 +1,22 @@
+{
+  "rootDir": ".",
+  "setupFiles": [],
+  "restoreMocks": true,
+  "transform": {
+    ".tsx?": "ts-jest"
+  },
+  "testRegex": "((\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json"
+  ],
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    "/dist/",
+    "/es/",
+    "/lib/"
+  ]
+}

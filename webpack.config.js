@@ -1,39 +1,40 @@
 var path = require("path");
 
-const capitalizeString = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+const capitalizeString = s => s.charAt(0).toUpperCase() + s.slice(1);
 
-module.exports = (env) => {
+module.exports = env => {
   const NODE_ENV = process.env.NODE_ENV;
-  const mode = NODE_ENV || 'development';
+  const mode = NODE_ENV || "development";
   const packageName = process.env.npm_package_name;
-  const packageNameCapital = packageName.split('-').map(capitalizeString).join('');
-  const packageVersion = JSON.stringify(process.env.npm_package_version).replace(/"/g, '');
-  const filename = `${packageName}-${packageVersion}${mode === 'production' ? '.min' : ''}.js`;
+  const packageNameCapital = packageName.split("-").map(capitalizeString).join("");
+  const packageVersion = JSON.stringify(process.env.npm_package_version).replace(/"/g, "");
+  const filename = `${packageName}-${packageVersion}${mode === "production" ? ".min" : ""}.js`;
 
-  return ({
+  return {
     mode,
+    devtool: "none",
     resolve: {
-      extensions: ['.js', '.ts']
+      extensions: [".js", ".ts"]
     },
-    entry: ['./src/index.ts'],
+    entry: ["./src/index.ts"],
     output: {
-      path: path.join(__dirname, 'dist'),
+      path: path.join(__dirname, "dist"),
       filename,
       library: {
         root: packageNameCapital,
         amd: packageName,
-        commonjs: packageName,
+        commonjs: packageName
       },
-      libraryTarget: 'umd',
+      libraryTarget: "umd"
     },
     module: {
       rules: [
         {
           test: /\.(tsx?)|(js)$/,
           exclude: /node_modules/,
-          loader: 'babel-loader',
-        },
-      ],
-    },
-  });
+          loader: "babel-loader"
+        }
+      ]
+    }
+  };
 };
