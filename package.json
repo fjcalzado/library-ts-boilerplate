@@ -51,7 +51,7 @@
     "test:watch": "cross-env NODE_ENV=test jest --verbose --watchAll --config jest.json",
     "lint": "tslint --project . --format stylish",
     "lint:fix": "prettier --write src/**/*.{ts,tsx,js,jsx} && tslint --project . --fix",
-    "prerelease": "npm run lint:fix && npm run build",
+    "prerelease": "npm run lint:fix && npm run test && npm run build",
     "release": "npm run prerelease && npm run publish"
   },
   "dependencies": {},
