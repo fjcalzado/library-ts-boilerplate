@@ -18,7 +18,7 @@ module.exports = env => {
     },
     entry: ['./src/index.ts'],
     output: {
-      path: path.join(__dirname, 'dist'),
+      path: path.join(__dirname, 'build/dist'),
       filename,
       library: {
         root: packageNameCapital,

@@ -2,10 +2,10 @@
 
 Generic boilerplate to publish libraries with NPM.
 
-Features:
+## Features
 * Typescript support.
 * Testing with Jest.
-* Different build targets with `npm run build`:
+* Different build targets with `npm run build` grouped under `build` folder:
   * `dist` folder contains a single bundle in ES5 with CommonJS module format. It is made with webpack and intended to be consumed by `<script>` tags. Both, regular and minified versions will be generated.
   * `lib` folder contains the sources to be consumed from another project. They will be generated in ES5 with 2 variants of barrel file:
     * `index.js` with CommonJS module syntax.
@@ -24,3 +24,13 @@ Features:
   * TSLint, to highlight linter errors on your code.
   * Prettier, it will allow to auto format document using prettier instead (`Shift + Alt + F`. Once installed, remember to check option `TSLint integration` to true for a better experience.
 
+## Workflow
+The typical workflow would be:
+* `npm install` to start developing.
+  * You can make use of `npm typecheck`, `npm test`, or `npm link` at your convenience while developing.
+  * Of course, you can also expand these scripts, e.g.: start a dev server.
+* `npm run build` to build all final artifacts within the `build` folder. This will be the entry point to be published. As you can see, source code and configuration files have been excluded. Only built artifacts are present.
+  * Note: the build process will automatically run type checking.
+* `npm prerelease` to get everything ready for release, including code formatting with prettier + tslint and test stage. Now we have 2 options:
+  * `npm release:local` to install locally our package through a symlink from the `build` folder to your local npm cache. This is very handy in order to test the package from a different project by using `npm link <your package name>`.
+  * `npm release` to finally publish your package in npm.

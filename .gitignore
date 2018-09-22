@@ -7,7 +7,4 @@ package-lock.json
 */src/**/*.js.map
 .idea/
 desktop.ini
-typings/
-dist/
-es/
-lib/
+build/
